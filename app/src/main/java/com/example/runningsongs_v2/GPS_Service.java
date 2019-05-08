@@ -128,8 +128,8 @@ public class GPS_Service extends Service {
         };
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    1, // minimum time interval between updates
-                    2, // minimum distance between updates, in metres
+                    2, // minimum time interval between updates
+                    5, // minimum distance between updates, in metres
                     locationListener);
             Log.d(Tag,"Successful");
         } catch (SecurityException e) {
