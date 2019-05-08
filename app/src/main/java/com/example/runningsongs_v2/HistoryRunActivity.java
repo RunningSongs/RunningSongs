@@ -52,12 +52,14 @@ public class HistoryRunActivity extends AppCompatActivity {
                 List<GeoStamp> nLocations = new ArrayList<>();
                 String[] locationParts = locations.split(";");
                 for (String part: locationParts) {
+                    if (part.isEmpty()) { continue; }
                     nLocations.add(new GeoStamp(part));
                 }
 
                 List<SongStamp> nStamps = new ArrayList<SongStamp>();
                 String[] songParts = songs.split(";");
                 for (String part: songParts) {
+                    if (part.isEmpty()) { continue; }
                     nStamps.add(new SongStamp(part));
                 }
 
