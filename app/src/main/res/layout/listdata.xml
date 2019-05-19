@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
         android:text="TextView"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
         android:text="TextView"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
     <TextView
@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.08"
         android:text="TextView"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 </LinearLayout>

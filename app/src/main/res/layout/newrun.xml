@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@drawable/background"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -13,42 +13,47 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="800px"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginTop="-5dp"
         tools:context=".MapsActivity" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:background="#1358a5"
         android:onClick="startchronometer"
         android:text="Start Run" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="105dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/chronometer2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="25dp"
+        android:background="#1358a5"
         android:onClick="stopTrackerApplication"
         android:text="Stop Run" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="-35dp"
-        android:layout_marginEnd="57dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="-59dp"
+        android:layout_marginEnd="12dp"
         android:layout_toEndOf="@+id/textView3"
         android:text="0"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp" />
 
     <TextView
@@ -57,40 +62,40 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
         android:text="Time in Seconds"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="106dp"
+        android:layout_height="70dp"
         android:layout_below="@+id/map"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="26dp"
         android:fontFamily="sans-serif"
         android:text="Distance in Meters"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textColorHint="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:textColor="@android:color/white" />
+        tools:textColor="@color/colorAccent" />
 
     <Chronometer
         android:id="@+id/chronometer2"
-        android:layout_width="126dp"
-        android:layout_height="44dp"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="20dp"
         android:layout_toEndOf="@+id/textView4"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp" />
 
     <TextView
@@ -112,9 +117,29 @@
         android:layout_height="48dp"
         android:layout_alignEnd="@+id/textView8"
         android:layout_alignBottom="@+id/textView8"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="13dp"
         android:background="@color/colorAccent"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:srcCompat="@drawable/arrow" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-5dp"
+        app:srcCompat="@drawable/header" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        app:srcCompat="@drawable/arrowleft" />
 
 </RelativeLayout>
