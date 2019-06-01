@@ -27,7 +27,8 @@
         android:layout_marginTop="25dp"
         android:background="#1358a5"
         android:onClick="startchronometer"
-        android:text="Start Run" />
+        android:text="Start Run"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
 
     <Button
         android:id="@+id/button4"
@@ -40,7 +41,8 @@
         android:layout_marginEnd="25dp"
         android:background="#1358a5"
         android:onClick="stopTrackerApplication"
-        android:text="Stop Run" />
+        android:text="Stop Run"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <TextView
         android:id="@+id/textView"
@@ -109,18 +111,19 @@
         android:layout_marginTop="27dp"
         android:layout_marginEnd="0dp"
         android:background="@color/colorAccent"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="47dp"
-        android:layout_height="48dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignEnd="@+id/textView8"
         android:layout_alignBottom="@+id/textView8"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
         android:background="@color/colorAccent"
-        app:srcCompat="@android:drawable/ic_media_play"
+        app:srcCompat="@drawable/arrow"
         tools:srcCompat="@drawable/arrow" />
 
 
@@ -131,15 +134,5 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="-5dp"
         app:srcCompat="@drawable/header" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        app:srcCompat="@drawable/arrowleft" />
 
 </RelativeLayout>

@@ -21,7 +21,8 @@
         android:layout_marginEnd="100dp"
         android:background="#1358a5"
         android:onClick="onClickStartNewRun"
-        android:text="Start new Trening" />
+        android:text="Start new Trening"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
     />
 
     <Button
@@ -34,7 +35,8 @@
         android:layout_marginTop="25dp"
         android:background="#1358a5"
         android:onClick="onClickStartRunHistory"
-        android:text="View History" />
+        android:text="View History"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <Button
         android:id="@+id/button5"
@@ -46,7 +48,8 @@
         android:layout_marginTop="25dp"
         android:background="#1358a5"
         android:onClick="onClickStartNewDay"
-        android:text="View Daily Record" />
+        android:text="View Daily Record"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <ImageView
         android:id="@+id/imageView"
