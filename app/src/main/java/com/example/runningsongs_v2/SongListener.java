@@ -61,6 +61,17 @@ public final class SongListener {
             String artist = intent.getStringExtra("artist");
             String album = intent.getStringExtra("album");
             String track = intent.getStringExtra("track");
+
+            if (track == null) {
+                return;
+            }
+            if (album == null) {
+                album = "Nieznany album";
+            }
+            if (artist == null) {
+                artist = "Nieznany wykonawca";
+            }
+
             Song song = new Song(track, artist, album);
             Log.v("tag", artist + ":" + album + ":" + track);
             if (delegate != null) {

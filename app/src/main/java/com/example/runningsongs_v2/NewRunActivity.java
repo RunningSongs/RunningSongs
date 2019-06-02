@@ -2,9 +2,11 @@ package com.example.runningsongs_v2;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Criteria;
@@ -12,6 +14,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.SystemClock;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
@@ -27,11 +30,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
@@ -49,8 +54,10 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
     private TextView textView;
     private TextView textView2;
+    private TextView songTitleTextView;
     private Button btn_start;
     private BroadcastReceiver broadcastReceiver;
+    private BroadcastReceiver broadcastReceiver2;
     private static String Tag;
     private String distance;
     private String time;
@@ -58,7 +65,9 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
     private SongListener songListener;
     private List<SongStamp> songStamps;
     private List<GeoStamp> geoStamps;
-
+    private GPS_Service myService;
+    private boolean bounded;
+    private SongStamp awaitingSongStamp = null;
 
     private GoogleMap mMap;
     GeoStamp location;
@@ -73,6 +82,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
         btn_start = (Button) findViewById(R.id.button3);
         textView = (TextView) findViewById(R.id.textView);
+        songTitleTextView = (TextView) findViewById(R.id.textView8);
         songListener = new SongListener(this);
         songListener.delegate = this;
         songListener.start();
@@ -81,7 +91,6 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         if(!runtime_permissions()){
             enable_buttons();
         }
-
 
     }
     @Override
@@ -98,6 +107,18 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
             };
         }
         registerReceiver(broadcastReceiver,new IntentFilter("location_update"));
+
+        if(broadcastReceiver2 == null){
+            broadcastReceiver2 = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    Float latitude = intent.getExtras().getFloat("latitude");
+                    Float longitude = intent.getExtras().getFloat("longitude");
+                    newSongLocationReceived(new LatLng(latitude, longitude));
+                }
+            };
+            registerReceiver(broadcastReceiver2, new IntentFilter("location_demand"));
+        }
     }
 
     @Override
@@ -109,7 +130,28 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         Log.d(Tag,"Destroyed Activity");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+//        Intent mIntent = new Intent(this, GPS_Service.class);
+//        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+    };
+
+    ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            bounded = false;
+            myService = null;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            bounded = true;
+//            GPS_Service.LocalBinder mLocalBinder = (GPS_Service.LocalBinder)service;
+//            myService = mLocalBinder.getServerInstance();
+        }
+    };
 
     public void stopTrackerApplication(View view) {
         DBHelper dbHandler = new DBHelper(this, null, null, 1);
@@ -177,15 +219,38 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         geoStamps.add(g);
     }
 
+    public void setSongMarker(SongStamp stamp) {
+        if (mMap == null) { return; }
+
+        MarkerOptions options = new MarkerOptions()
+                .position(stamp.getLatLng())
+                .draggable(false)
+                .title(stamp.getSong().title)
+                .snippet(stamp.getSong().artist);
+
+        Marker marker = mMap.addMarker(options);
+    }
+
+    private void newSongLocationReceived(LatLng location) {
+        awaitingSongStamp.setLatitude(location.latitude);
+        awaitingSongStamp.setLongitude(location.longitude);
+        songStamps.add(awaitingSongStamp);
+        setSongMarker(awaitingSongStamp);
+
+        awaitingSongStamp = null;
+    }
+
     @Override
     public void onSongReceived(Song song) {
         if (song.title.isEmpty() || song.artist.isEmpty()) { return; }
-        Toast.makeText(this, song.title, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, song.title, Toast.LENGTH_SHORT).show();
+        songTitleTextView.setText(song.title);
         Integer id = songStamps.size();
-        LatLng latLng = new LatLng(2, 2);
 
-        SongStamp s = new SongStamp(id, song, latLng);
-        songStamps.add(s);
+        awaitingSongStamp = new SongStamp(id, song);
+        if (myService != null) {
+            myService.demandLocation();
+        }
     }
 
     @Override

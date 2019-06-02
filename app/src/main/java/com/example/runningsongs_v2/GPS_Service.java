@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -32,11 +33,19 @@ public class GPS_Service extends Service {
     static Double distance = 0.0;
     static int status = 0;
     private long timeOfLastUpdate;
+    private boolean demandsUpdate = false;
 
-    @Nullable
+    IBinder mBinder = new LocalBinder();
+
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return mBinder;
+    }
+
+    public class LocalBinder extends Binder {
+        public GPS_Service getServerInstance() {
+            return GPS_Service.this;
+        }
     }
 
     @Override
@@ -56,6 +65,8 @@ public class GPS_Service extends Service {
             @Override
             public void onLocationChanged(final Location location) {
                 Log.v("Debug", "in onLocation changed..");
+
+
                 long timeElapsed = System.currentTimeMillis() - timeOfLastUpdate;
                 if (status == 0) {
                     lat1 = location.getLatitude();
@@ -91,6 +102,14 @@ public class GPS_Service extends Service {
                 timeOfLastUpdate = System.currentTimeMillis();
 
                 sendBroadcast(i);
+
+                if(demandsUpdate) {
+                    demandsUpdate = false;
+                    Intent l = new Intent("location_demand");
+                    l.putExtra("latitude", location.getLatitude());
+                    l.putExtra("longitude", location.getLongitude());
+                    sendBroadcast(l);
+                }
 
             }
 
@@ -147,5 +166,9 @@ public class GPS_Service extends Service {
             locationManager.removeUpdates(locationListener);
         }
         Log.d(Tag,"Destroyed Service");
+    }
+
+    public void demandLocation() {
+        //demandsUpdate = true;
     }
 }

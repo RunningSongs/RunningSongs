@@ -18,6 +18,11 @@ public final class SongStamp implements Serializable {
         longitude = latLng.longitude;
     }
 
+    public SongStamp(Integer id, Song song) {
+        this.id = id;
+        this.song = song;
+    }
+
     public SongStamp(String expression) {
         // Example 1:title-artist:12.9219-92.009;
         String[] parts = expression.split(":");
