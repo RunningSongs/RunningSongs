@@ -50,13 +50,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="-59dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginEnd="30dp"
         android:layout_toEndOf="@+id/textView3"
         android:text="0"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp" />
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -65,7 +65,7 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="24dp"
         android:text="Time in Seconds"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
@@ -93,9 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:layout_toEndOf="@+id/textView4"
         android:textColor="@color/colorAccent"
         android:textSize="30sp" />
