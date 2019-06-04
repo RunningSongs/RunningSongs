@@ -248,9 +248,9 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         Integer id = songStamps.size();
 
         awaitingSongStamp = new SongStamp(id, song);
-        if (myService != null) {
-            myService.demandLocation();
-        }
+        LatLng loc = getLocation();
+        if (loc == null) { return; }
+        newSongLocationReceived(loc);
     }
 
     @Override
@@ -264,32 +264,28 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         googleMap.setMyLocationEnabled(true);
+
+        LatLng location = getLocation();
+        if (location == null) { return; }
+        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(location, 15);
+        mMap.animateCamera(yourLocation);
+    }
+
+    private LatLng getLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
         Location location = locationManager.getLastKnownLocation(provider);
 
-
         if (location != null) {
             double latitude = location.getLatitude();
             double longitude = location.getLongitude();
             LatLng latLng = new LatLng(latitude, longitude);
-            myPosition = new LatLng(latitude, longitude);
-
-
-            LatLng coordinate = new LatLng(latitude, longitude);
-            CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 15);
-            mMap.animateCamera(yourLocation);
+            return new LatLng(latitude, longitude);
         }
+        return null;
     }
 }

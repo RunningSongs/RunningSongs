@@ -169,6 +169,6 @@ public class GPS_Service extends Service {
     }
 
     public void demandLocation() {
-        //demandsUpdate = true;
+        demandsUpdate = true;
     }
 }
