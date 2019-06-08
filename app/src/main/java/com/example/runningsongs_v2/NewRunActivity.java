@@ -101,7 +101,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     distance = String.valueOf(intent.getExtras().get("coordinates"));
-                    textView.setText("\n" +intent.getExtras().get("coordinates"));
+                    textView.setText("" +intent.getExtras().get("coordinates"));
 
                 }
             };
