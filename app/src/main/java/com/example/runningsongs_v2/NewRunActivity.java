@@ -44,6 +44,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.example.runningsongs_v2.R.id.chronometer2;
 
@@ -71,6 +73,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
     private GoogleMap mMap;
     GeoStamp location;
+    private Timer myTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,18 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         songListener.delegate = this;
         songListener.start();
         songStamps = new ArrayList<SongStamp>();
+
+        myTimer = new Timer();
+        myTimer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (geoStamps == null) {
+                            geoStamps = new ArrayList<>();
+                        }
+                        GeoStamp g = new GeoStamp(geoStamps.size(), getLocation());
+                        geoStamps.add(g);
+            }
+        }, 0, 10000);
 
         if(!runtime_permissions()){
             enable_buttons();
@@ -134,6 +149,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
     protected void onStart() {
         super.onStart();
 
+
 //        Intent mIntent = new Intent(this, GPS_Service.class);
 //        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
     };
@@ -171,7 +187,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
         List<GeoStamp> fakeStamps = Arrays.asList(GeoStamp.getFakeStamps());
 
-        RunnerTracker runnerTracker = new RunnerTracker(distance,date,time, songStamps, fakeStamps);
+        RunnerTracker runnerTracker = new RunnerTracker(distance,date,time, songStamps, geoStamps);
 
         dbHandler.addRunnerTracker(runnerTracker);
     }
