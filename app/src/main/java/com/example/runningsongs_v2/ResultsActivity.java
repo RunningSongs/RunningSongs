@@ -27,6 +27,10 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+/**  Klasa reprezentująca serwis GPS pobierający aktualną pozycję użytkownika
+ *
+ */
+
 public class ResultsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private TextView distanceTextView;
@@ -35,7 +39,6 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
     private Button songsListButton;
 
     private RunnerTracker tracker;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,16 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
         setSongs();
     }
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
+
     private RunnerTracker getTracker() {
         Bundle bundle = getIntent().getExtras();
         RunnerTracker nTracker = (RunnerTracker)bundle.getSerializable("tracker");
@@ -83,6 +96,16 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
         distanceTextView.setText(Double.toString(tracker.getRunnerTrackerDistance()));
         songsListButton.setText(Integer.toString(tracker.getSongStamps().size()) + " piosenek");
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     private void setLocations() {
         if (googleMap == null) {
@@ -117,6 +140,16 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
 
     }
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
+
     private void setSongs() {
         if (googleMap == null) {
             return;
@@ -136,6 +169,16 @@ public class ResultsActivity extends AppCompatActivity implements OnMapReadyCall
         }
 
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     private void openSongsList() {
         Intent i = new Intent(this, SongsActivity.class);

@@ -19,23 +19,26 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**  Klasa reprezentująca serwis GPS pobierający aktualną pozycję użytkownika
+ *
+ */
 
 public class GPS_Service extends Service {
 
-    private LocationListener locationListener;
-    private LocationManager locationManager;
-    public GPS_Service_Delegate delegate = null;
-    private static String Tag="GPS_Service";
-    static Double lat1 = null;
-    static Double lon1 = null;
-    static Double lat2 = null;
-    static Double lon2 = null;
-    static Double distance = 0.0;
-    static int status = 0;
-    private long timeOfLastUpdate;
-    private boolean demandsUpdate = false;
+    private LocationListener locationListener;  /**< \ */
+    private LocationManager locationManager;  /**< \ */
+    public GPS_Service_Delegate delegate = null;  /**< \ */
+    private static String Tag="GPS_Service";  /**< \ */
+    static Double lat1 = null;  /**< \ */
+    static Double lon1 = null;  /**< \ */
+    static Double lat2 = null;  /**< \ */
+    static Double lon2 = null;  /**< \ */
+    static Double distance = 0.0;  /**< \ */
+    static int status = 0;  /**< \ */
+    private long timeOfLastUpdate;  /**< \ */
+    private boolean demandsUpdate = false;  /**< \ */
 
-    IBinder mBinder = new LocalBinder();
+    IBinder mBinder = new LocalBinder();  /**< \ */
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -57,6 +60,11 @@ public class GPS_Service extends Service {
 
 
     }
+
+    /**  Metoda pobiera aktualną pozycję użytkownika, zapisuje i porównuje z kolejną, aby obliczyć dystans
+     *
+     */
+
     public void getCurrentLocation() {
 
         locationManager =

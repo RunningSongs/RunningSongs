@@ -13,10 +13,14 @@ import android.widget.TextView;
 import com.example.runningsongs_v2.DBHelper;
 import com.example.runningsongs_v2.R;
 
+/**  Activity otwierające aplikację
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
     private Button button;
-    DBHelper dbHelper;
-    SQLiteDatabase db;
+    DBHelper dbHelper;  /**< \Obiekt typu DBHelper */
+    SQLiteDatabase db;  /**< \Baza danych */
     private TextView textView8;
 
     @Override

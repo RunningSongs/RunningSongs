@@ -12,6 +12,10 @@ import com.example.runningsongs_v2.CustomDataAdapter;
 import com.example.runningsongs_v2.DBHelper;
 import com.example.runningsongs_v2.R;
 
+/**
+ *
+ */
+
 public class LogsForEachDay extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db;

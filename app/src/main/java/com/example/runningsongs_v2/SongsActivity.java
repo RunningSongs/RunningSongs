@@ -12,10 +12,14 @@ import java.util.List;
 
 import static com.example.runningsongs_v2.R.layout.song_cell;
 
+/**  Klasa definiująca ekran wyświetlający listę utworów
+ *
+ */
+
 public class SongsActivity extends AppCompatActivity {
 
-    private List<Song> songs;
-    private ListView list;
+    private List<Song> songs;  /**< \Lista obiektów */
+    private ListView list;  /**< \Lista - element UI */
     private ArrayAdapter<String> adapter;
 
     @Override

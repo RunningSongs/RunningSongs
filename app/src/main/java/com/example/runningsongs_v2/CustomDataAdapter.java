@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-
+/**  Klasa reprezentująca serwis GPS pobierający aktualną pozycję użytkownika
+ *
+ */
 
 public class CustomDataAdapter extends CursorAdapter {
     public CustomDataAdapter(Context context, Cursor cursor) {

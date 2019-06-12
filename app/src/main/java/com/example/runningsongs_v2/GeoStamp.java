@@ -4,17 +4,33 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 
+/**  Klasa reprezentująca pozycję użytkownika
+ *
+ */
+
 public final class GeoStamp implements Serializable {
 
-    private Integer _id;
-    private Double latitude;
-    private Double longitude;
+    private Integer _id;  /**< \Identyfikator */
+    private Double latitude;  /**< \Szerokość geograficzna */
+    private Double longitude;  /**< \Długość geograficzna */
+
+    /** \brief Konstruktor parametryczny tworzący obiekt na podstawie koordynatów i identyfikatora
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param id Identyfikator
+     * @param latLng Koordynaty
+     */
 
     public GeoStamp(int id, LatLng latLng) {
         _id = id;
         latitude = latLng.latitude;
         longitude = latLng.longitude;
     }
+
+    /** \brief Konstruktor parametryczny tworzący obiekt na podstawie wyrażenia z bazy danych.
+     * Tu trochę bardziej wymyślny opis
+     * @param expression Wyrażenie z bazy
+     */
 
     public GeoStamp(String expression) {
         // Example 1:lat###lng

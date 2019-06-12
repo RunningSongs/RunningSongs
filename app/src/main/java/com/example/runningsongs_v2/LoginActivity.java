@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**  Klasa reprezentująca serwis GPS pobierający aktualną pozycję użytkownika
+ *
+ */
 
 public class LoginActivity extends AppCompatActivity {
     EditText edttxt1,edttxt2;

@@ -5,17 +5,30 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 5;
-    private static final String DATABASE_NAME = "RunnerTrackerDB.db";
-    public static final String TABLE_RUNNERTRACKER = "RunnerTracker2";
+/**  Klasa umożliwożliwiająca komunikację z lokalną bazą danych
+ *
+ */
 
-    public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_DISTANCE = "distance";
-    public static final String COLUMN_DATE = "date";
-    public static final String COLUMN_TIME = "time";
-    public static final String COLUMN_LOCATIONS = "locations";
-    public static final String COLUMN_SONG_STAMPS = "song_stamps";
+public class DBHelper extends SQLiteOpenHelper {
+    private static final int DATABASE_VERSION = 5;  /**< \Wersja bazy danych */
+    private static final String DATABASE_NAME = "RunnerTrackerDB.db";  /**< \Nazwa bazy danych */
+    public static final String TABLE_RUNNERTRACKER = "RunnerTracker2";  /**< \Nazwa projektu dla bazy danych */
+
+    public static final String COLUMN_ID = "_id";  /**< \Nazwa kolumny 'id' */
+    public static final String COLUMN_DISTANCE = "distance";  /**< \Nazwa kolumny 'distance' */
+    public static final String COLUMN_DATE = "date";  /**< \Nazwa kolumny 'date' */
+    public static final String COLUMN_TIME = "time";  /**< \Nazwa kolumny 'time' */
+    public static final String COLUMN_LOCATIONS = "locations";  /**< \Nazwa kolumny 'locations' */
+    public static final String COLUMN_SONG_STAMPS = "song_stamps";  /**< \Nazwa kolumny 'song_stamps' */
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param context Współrzędna OX dla początku pocisku
+     * @param name Współrzędna OY dla początku pocisku
+     * @param factory Współrzędna OX dla końca pocisku
+     * @param version Współrzędna OY dla końca pocisku
+     */
 
     public DBHelper(Context context, String name,
                     SQLiteDatabase.CursorFactory factory, int version) {
@@ -45,6 +58,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param runnerTracker Współrzędna OX dla początku pocisku
+     */
+
     public void addRunnerTracker(RunnerTracker runnerTracker) {
 
         ContentValues values = new ContentValues();

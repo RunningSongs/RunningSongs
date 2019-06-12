@@ -15,6 +15,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**  Activity prezentujące listę treningów z przeszłości
+ *
+ */
+
 public class HistoryRunActivity extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db;
@@ -35,6 +39,9 @@ public class HistoryRunActivity extends AppCompatActivity {
         setupView();
 
     }
+
+    /** \brief Metoda ładująca sesje treningowe z bazy danych
+     */
 
     public void loadTrackers() {
         Cursor  c = db.rawQuery("select * from RunnerTracker2",null);
@@ -70,6 +77,10 @@ public class HistoryRunActivity extends AppCompatActivity {
         }
     }
 
+    /** \brief Metoda generująca widok.
+     *
+     */
+
     public void setupView(){
         Cursor  c = db.rawQuery("select * from RunnerTracker2",null);
         recipeList = (ListView) findViewById(R.id.ListView);
@@ -95,7 +106,7 @@ public class HistoryRunActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapter, View v, int position,
                                         long arg3)
                 {
-                    Log.d("CHUJ", String.valueOf(trackerList.get(position).getSongStamps().size()) + " songs");
+                    Log.d("Tracker", String.valueOf(trackerList.get(position).getSongStamps().size()) + " songs");
                     //String value = (String)adapter.getItemAtPosition(position);
                     // assuming string and if you want to get the value on click of list item
                     // do what you intend to do on click of listview row

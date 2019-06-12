@@ -13,14 +13,28 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+/**  Klasa reprezentująca obiekt 'nasłuchujący' obecnie grającą aplikację w celu pobrania metadanych utworu
+ *
+ */
+
 public final class SongListener {
 
-    public SongListenerDelegate delegate = null;
-    private Activity activity;
+    public SongListenerDelegate delegate = null;  /**< \Klasa 'odbierająca' obiekt typu 'Song' w metodzie 'onSongReceived' */
+    private Activity activity;  /**< \ */
+
+    /** \brief Konstruktor pobierający nasłuchujące Activity
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param activity Obiekt Activity
+     */
 
     public SongListener(Activity activity) {
         this.activity = activity;
     }
+
+    /**  Metoda startująca nasłuchiwanie
+     *
+     */
 
     public void start() {
         Log.v("tag", "Startuje listenera");
@@ -46,10 +60,18 @@ public final class SongListener {
         activity.registerReceiver(mReceiver, iF);
     }
 
+    /**  Metoda stopująca nasłuchiwanie
+     *
+     */
+
     public void stop() {
         Log.v("tag", "Stopuje listenera");
         activity.unregisterReceiver(mReceiver);
     }
+
+    /**  Obiekt odbierący komunikaty od odtwarzającej aplikacji muzycznej
+     *
+     */
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
 

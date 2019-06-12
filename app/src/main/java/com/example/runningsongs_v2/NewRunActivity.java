@@ -49,6 +49,10 @@ import java.util.TimerTask;
 
 import static com.example.runningsongs_v2.R.id.chronometer2;
 
+/**  Klasa reprezentująca serwis GPS pobierający aktualną pozycję użytkownika
+ *
+ */
+
 public class NewRunActivity extends AppCompatActivity implements SongListenerDelegate, OnMapReadyCallback {
     DBHelper dbHelper;
     SQLiteDatabase db;
@@ -169,6 +173,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         }
     };
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
+
     public void stopTrackerApplication(View view) {
         DBHelper dbHandler = new DBHelper(this, null, null, 1);
         Intent i = new Intent(getApplicationContext(),GPS_Service.class);
@@ -178,6 +192,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         doStuff();
         Log.d("g53mdp","Stop Service");
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     private void doStuff(){
         DBHelper dbHandler = new DBHelper(this, null, null, 1);
@@ -206,6 +230,15 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
     }
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     private boolean runtime_permissions() {
         if(Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -230,10 +263,30 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         }
     }
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
+
     public void newLocationReceived(LatLng nLocation) {
         GeoStamp g = new GeoStamp(geoStamps.size(), nLocation);
         geoStamps.add(g);
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     public void setSongMarker(SongStamp stamp) {
         if (mMap == null) { return; }
@@ -247,6 +300,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         Marker marker = mMap.addMarker(options);
     }
 
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
+
     private void newSongLocationReceived(LatLng location) {
         awaitingSongStamp.setLatitude(location.latitude);
         awaitingSongStamp.setLongitude(location.longitude);
@@ -255,6 +318,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
         awaitingSongStamp = null;
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     @Override
     public void onSongReceived(Song song) {
@@ -268,6 +341,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         if (loc == null) { return; }
         newSongLocationReceived(loc);
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -289,6 +372,16 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
         CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(location, 15);
         mMap.animateCamera(yourLocation);
     }
+
+    /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
+     *
+     * Tu trochę bardziej wymyślny opis
+     * @param x1 Współrzędna OX dla początku pocisku
+     * @param y1 Współrzędna OY dla początku pocisku
+     * @param x2 Współrzędna OX dla końca pocisku
+     * @param y2 Współrzędna OY dla końca pocisku
+     * @see colisionLine() odnośnik do innej funkcji
+     */
 
     private LatLng getLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
