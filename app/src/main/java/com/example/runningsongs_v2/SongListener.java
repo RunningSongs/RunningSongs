@@ -24,7 +24,6 @@ public final class SongListener {
 
     /** \brief Konstruktor pobierający nasłuchujące Activity
      *
-     * Tu trochę bardziej wymyślny opis
      * @param activity Obiekt Activity
      */
 

@@ -13,7 +13,6 @@ public final class Song implements Serializable {
 
     /** \brief Konstruktor tworzący utwór na podstawie podanych danych.
      *
-     * Tu trochę bardziej wymyślny opis
      * @param title Tytuł
      * @param artist Wykonawca
      * @param album Nazwa albumu

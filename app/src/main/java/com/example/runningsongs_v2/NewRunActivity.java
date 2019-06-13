@@ -195,7 +195,6 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
 
     /** \brief Konstruktor parametryczny tworzący pocisk na podstawie jego początku i końca.
      *
-     * Tu trochę bardziej wymyślny opis
      * @param x1 Współrzędna OX dla początku pocisku
      * @param y1 Współrzędna OY dla początku pocisku
      * @param x2 Współrzędna OX dla końca pocisku
@@ -333,7 +332,7 @@ public class NewRunActivity extends AppCompatActivity implements SongListenerDel
     public void onSongReceived(Song song) {
         if (song.title.isEmpty() || song.artist.isEmpty()) { return; }
         //Toast.makeText(this, song.title, Toast.LENGTH_SHORT).show();
-        songTitleTextView.setText(song.title);
+        songTitleTextView.setText(song.artist+" - "+song.title);
         Integer id = songStamps.size();
 
         awaitingSongStamp = new SongStamp(id, song);

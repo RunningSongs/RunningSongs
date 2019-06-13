@@ -2,10 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
-
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +15,6 @@
         android:layout_below="@+id/imageView3"
         android:layout_marginTop="-5dp"
         tools:context=".MapsActivity" />
-
     <Button
         android:id="@+id/button3"
         android:layout_width="120dp"
@@ -29,7 +27,6 @@
         android:onClick="startchronometer"
         android:text="Start Run"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
-
     <Button
         android:id="@+id/button4"
         android:layout_width="120dp"
@@ -46,18 +43,19 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="162dp"
+        android:gravity="center"
+        android:layout_width="266dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="-73dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginEnd="6dp"
         android:layout_toEndOf="@+id/textView3"
-        android:gravity="center"
         android:text="0"
         android:textColor="@color/colorAccent"
-        android:textSize="35sp" />
+        android:textSize="30sp" />
+    android:textSize="35sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -71,7 +69,6 @@
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="106dp"
@@ -90,32 +87,35 @@
 
     <Chronometer
         android:id="@+id/chronometer2"
-        android:layout_width="313dp"
+        android:gravity="center"
+        android:layout_width="239dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="32dp"
         android:layout_toEndOf="@+id/textView4"
-        android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
         android:background="@color/colorAccent"
-        android:text="TextView"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24dp" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -124,5 +124,4 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="-5dp"
         app:srcCompat="@drawable/header" />
-
 </RelativeLayout>
